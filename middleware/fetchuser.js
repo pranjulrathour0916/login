@@ -8,13 +8,12 @@ const fetchuser = (req, res, next)=>{
         res.status(401).send("Please enter the correct creds")
     }
     const data = jwt.verify(token, myText);
-    req.user = data.user;
+    req.user = data.user
     next()
     } catch (error) {
         console.error(error.message)
         res.status(401).send("Invalid token")
     }
-    
 }
 
 module.exports = fetchuser;

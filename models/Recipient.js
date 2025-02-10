@@ -34,7 +34,7 @@ const recipientSchema = new Schema({
         dafault :  Date.now,  
     },
     logUser : {
-        type : mongoose.Schema.Types.ObjectId,
+        type : mongoose.Schema.Types.Number,
         ref : 'Users'
     }
     
