@@ -11,6 +11,9 @@ const messageSchema = new Schema({
         type : Date,
         default : Date.now,
         get: (date) => date.toISOString().split("T")[0]
+    },
+    sendername : {
+        type : String
     }
 })
 const recipientSchema = new Schema({
@@ -22,7 +25,6 @@ const recipientSchema = new Schema({
     phone : {
         type : Number,
         required : true,
-        unique : true
     },
     messages : {
         type : [messageSchema],

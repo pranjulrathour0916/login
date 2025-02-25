@@ -9,6 +9,7 @@ const fetchuser = (req, res, next)=>{
     }
     const data = jwt.verify(token, myText);
     req.user = data.user
+   
     next()
     } catch (error) {
         console.error(error.message)

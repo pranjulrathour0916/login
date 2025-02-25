@@ -24,7 +24,7 @@ router.post(
     if (!result.isEmpty()) {
       res.send("Please Enter the correct credentials");
     } else {
-      const existUser = await Users.findOne({ email: req.body.email });
+      const existUser = await Users.findOne({ phone: req.body.phone });
       if (existUser) {
         res.send("User already exist");
       } else {
@@ -52,8 +52,13 @@ router.post(
   "/login",
   [body("phone"), body("password").exists()],
   async (req, res) => {
+    const navData = ({
+      user1 :"",
+      authtoken : ""
+    })
     const { phone, password } = req.body;
     const user = await Users.findOne({ phone });
+    navData.user1 = user
     if (!user) {
       res.status(400).send("Please enter the correct creds");
     }
@@ -65,7 +70,8 @@ router.post(
         user: user.phone,
       };
       const auth_token = jwt.sign(data, myText);
-      res.json(auth_token);
+      navData.authtoken = auth_token;
+      res.json(navData);
       
     }
   }
