@@ -101,4 +101,9 @@ router.get("/deletemsg/:recphn/:id", fetchuser, async (req, res) => {
 
 });
 
+router.get("/testing", async (req, res) => {
+  const allMsg = await Recipient.findOne({phone : 8523697412});
+  res.json(allMsg);
+});
+
 module.exports = router;
