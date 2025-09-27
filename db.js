@@ -1,6 +1,6 @@
 const { mongo, default: mongoose } = require("mongoose");
 
-const mongoURI = "mongodb://localhost:27017/Login"
+const mongoURI = process.env.MONGOGB_URI
 
 async function connetToMongo() {
     await mongoose.connect(mongoURI)
